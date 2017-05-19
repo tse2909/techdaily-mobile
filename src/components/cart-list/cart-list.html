@@ -1,0 +1,44 @@
+<!--
+  Generated template for the CartList component.
+
+  See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
+  for more info on Angular 2 Components.
+-->
+<ion-content padding>
+  <div *ngIf="cart">
+    <ion-card *ngFor="let c of cart">
+      <ion-icon class="close" name='close-circle' (click)="deleteItem.emit(c)"></ion-icon>
+      <div class="sideimage">
+        <img src="{{c.image}}" alt="">
+      </div>
+      <ion-card-header>
+        {{c.brand}}
+      </ion-card-header>
+      <ion-card-content>
+        <!--<button ion-button icon-only>-->
+        {{c.title}} <br>
+        <!--</button>-->
+        Rp.{{c.price | number}} <br><br>
+        <!--<div>Qty</div> -->
+        <ion-item>
+          <ion-select [(ngModel)]="c.quantity">
+            <!--<ion-label>1</ion-label>-->
+            <ion-label>Qty</ion-label>
+            <ion-option>1</ion-option>
+            <ion-option>2</ion-option>
+            <ion-option>3</ion-option>
+            <ion-option>4</ion-option>
+            <ion-option>5</ion-option>
+            <ion-option>6</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
+<div *ngIf="cartCount !== 0">
+<ion-fab center bottom>
+  <button ion-fab style="width: 30%; background:#fff; color:#000">{{cartCount}} ITEM <br>Rp.{{cartTotal|number}}</button>
+  <button ion-fab style="width: 70%" (click)="gotoCheckout.emit(cart)">SECURE CHECKOUT</button>
+</ion-fab>
+</div>

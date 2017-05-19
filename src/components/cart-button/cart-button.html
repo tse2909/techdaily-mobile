@@ -1,0 +1,16 @@
+<!--
+  Generated template for the CartButton component.
+
+  See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
+  for more info on Angular 2 Components.
+-->
+
+
+
+
+<ion-buttons end>
+    <div class="cart-count">{{cartCount}}</div>
+    <button ion-button icon-only (click)="gotoCarts.emit()">
+            <ion-icon name="cart"></ion-icon>
+        </button>
+</ion-buttons>

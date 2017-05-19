@@ -1,0 +1,123 @@
+<!--
+  Generated template for the CheckoutPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Checkout</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      Shipping Detail
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <form [formGroup]="checkoutForm">
+        <ion-item>
+          <ion-label>Ship to address</ion-label>
+          <ion-checkbox disabled="false"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>First Name</ion-label>
+          <ion-input formControlName="firstName" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Last Name</ion-label>
+          <ion-input formControlName="lastName" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Email</ion-label>
+          <ion-input formControlName="email" type="password"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Phone</ion-label>
+          <ion-input formControlName="phone" type="number"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Address1</ion-label>
+          <ion-input formControlName="address1" type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Address2</ion-label>
+          <ion-input formControlName="address2" type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>City*</ion-label>
+          <ion-input formControlName="city" type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>State</ion-label>
+          <ion-input formControlName="state" type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Postal Code*</ion-label>
+          <ion-input formControlName="postal" type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Country</ion-label>
+          <ion-input formControlName="country" type="text"></ion-input>
+        </ion-item>
+        </form>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      Payment Method
+    </ion-card-header>
+    <ion-card-content>
+      <ion-row>
+        <ion-col width-50>
+          <ion-card>
+            <ion-card-header>
+              Bank Transfer
+            </ion-card-header>
+            <ion-card-content>
+
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col width-50>
+          <ion-card>
+            <ion-card-header>
+              Paypal
+            </ion-card-header>
+            <ion-card-content>
+
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      Purchase Detail
+    </ion-card-header>
+    <ion-card-content>
+      {{cartCount}} Item <br>
+      Rp{{cartTotal}}
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <button ion-button (click)="Checkout()" full>Checkout</button>
+  </ion-toolbar>
+</ion-footer>

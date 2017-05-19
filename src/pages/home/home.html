@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  
+  <div class="banner">
+  <ion-card>
+    <ion-slides pager loop slidesPerView="1" autoplay="2000">
+      <ion-slide>
+        <img src="http://www.smartsaver.my/storage/upload/images/Ciate_Media_Banner_202_ac07cc4fcb9f3e03f2b3589155b7c07c1ddebfc4_1454306964.jpg"
+          alt="">
+      </ion-slide>
+      <ion-slide>
+        <img src="http://www.sephora.com/contentimages/editorial/trendingatsephora/2017/April/trend_cat_lp_banner_highlighting_main_banner_040417_image.jpg"
+          alt="">
+      </ion-slide>
+      <ion-slide>
+        <img src="https://s-media-cache-ak0.pinimg.com/736x/b1/48/c1/b148c11dcfe3ca7ebbf3ab46868abd6c.jpg" alt="">
+      </ion-slide>
+    </ion-slides>
+  </ion-card>
+</div>
+<product-slide [products]="(products | async)" title="NEW PRODUCT" filter="NEW" (gotoDetails)="gotoDetails($event)" (gotoProducts)="gotoProducts($event)"></product-slide>
+  <product-slide [products]="(products | async)" title="HOT PRODUCT" filter="HOT" (gotoDetails)="gotoDetails($event)" (gotoProducts)="gotoProducts($event)"></product-slide>
+ 
+</ion-content>

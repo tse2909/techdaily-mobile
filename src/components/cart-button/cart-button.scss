@@ -1,0 +1,24 @@
+cart-button {
+    ion-buttons{
+        position: relative;
+
+        .cart-count{
+            position: absolute;
+            border-radius: 50%;
+            background: red;
+            right: 6px;
+            top: -30px; 
+            color: #fff;
+            font-size: 10px;
+            font-weight: 900;
+            padding: 4px; 
+            z-index: 2;
+        }
+    };
+
+    .bar-button{
+        position: absolute;
+        right: 15px;
+        top: -24px;
+    }
+}

@@ -1,0 +1,30 @@
+<!--
+  Generated template for the ProductDetail page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle> <ion-icon name="menu"></ion-icon> </button>
+    <ion-title>{{product.name}}</ion-title>
+    <!--<button ion-button icon-only start menuToggle right>
+            <ion-icon name="cart"></ion-icon>
+          </button>-->
+    <cart-button [cart]="(cart | async)"></cart-button>
+
+
+  </ion-navbar>
+
+</ion-header>
+
+
+
+
+
+<!--<button (click)="newContact()" fab fab-bottom fab-right fab-fixed>
+    <ion-icon name="add"></ion-icon>
+</button>-->
+
+<product-item [productDetail]="(productDetail | async)" (addToCart)="addToCartOutput($event)"></product-item>

@@ -1,0 +1,23 @@
+<!--
+  Generated template for the Brand page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <button ion-button icon-only menuToggle>  
+		<ion-icon name="menu"  left></ion-icon>
+		</button>
+    <ion-title>
+      Brands
+    </ion-title>
+    <cart-button [cart]="(cart|async)"></cart-button>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <brand-list [products]="(products | async)" (gotoProducts)="gotoProducts($event)"></brand-list>
+</ion-content>

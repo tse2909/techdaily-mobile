@@ -1,0 +1,35 @@
+<!--
+  Generated template for the ProductItem component.
+
+  See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
+  for more info on Angular 2 Components.
+-->
+
+
+<ion-content padding>
+  <ion-card>
+    <img style="max-width: 100%; height:auto" src="{{productDetail.image}}" />
+    <ion-card-content>
+      <ion-card-title>
+        {{productDetail.category}}
+      </ion-card-title>
+      <p>{{productDetail.name}}</p>
+      <strong><p>Rp {{productDetail.price| number}}</p></strong>
+      <br>
+      <ion-card-title>
+        Product Info
+      </ion-card-title>
+      <div [innerHtml]="productDetail.description"></div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<ion-fab center bottom>
+  <ion-item>
+    <ion-select [(ngModel)]="quantity">
+      <!--<ion-label>1</ion-label>-->
+      <ion-option *ngFor="let quantity of quantities" >{{quantity}}</ion-option>
+    </ion-select>
+  </ion-item>
+  <button ion-fab (click)="addtoCartClick()">BUY NOW</button>
+</ion-fab>

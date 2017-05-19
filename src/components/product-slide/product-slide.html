@@ -1,0 +1,53 @@
+
+<div *ngIf="products">
+  <div class="slide-product">
+    <ion-card>
+      <div class="title">{{title}}</div>
+      <div class="title-right" (click)="gotoProducts.emit(filter)">see all</div>
+      <ion-slides pager slidesPerView="2.2">
+        <ion-slide *ngFor="let k of sortedProducts" (click)="gotoDetails.emit(k)">
+          <div style="padding: auto; height:140px">
+            <img src="{{k.images[0].src}}" alt="">
+          </div>
+          <ion-card-content>
+            <ion-card-title>
+              {{k.categories[0].name}}
+            </ion-card-title>
+            <p>{{k.name}}</p>
+            <p style="color:#cf000f; font-weight:900">Rp {{k.price| number}}</p>
+          </ion-card-content>
+        </ion-slide>
+      </ion-slides>
+    </ion-card>
+  </div>
+
+  <!--{{slides.images.src}}-->
+  <!--<div *ngFor="let k of images" ></div>
+  {{k}}
+   </div>-->
+  <!--<ion-row>
+        <ion-col>
+            <h4 class="name">John Smith</h4>
+            <p class="twittername">@johnsmith</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam quis ultrices quam, at interdum ante.</p>
+        </ion-col>
+    </ion-row>-->
+  <!--<ion-row>
+    <ion-col width-50 *ngFor="let k of products">
+      <ion-card (click)="gotoDetails.emit(k)">
+        <img style="width:100%" src="{{k.images[0].src}}" />
+        <ion-card-content>
+          <ion-card-title>
+            {{k.categories[0].name}}
+          </ion-card-title>
+          <p>
+            {{k.name}}
+          </p>
+          <p style="color:#cf000f; font-weight:900">Rp {{k.price| number}}</p>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>-->
+
+  <!--{{images.toString()}}-->
+</div>

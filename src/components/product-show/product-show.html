@@ -1,0 +1,25 @@
+<!--
+  Generated template for the ProductShow component.
+
+  See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
+  for more info on Angular 2 Components.
+-->
+
+<ion-row>
+  <ion-col width-50 *ngFor="let k of brandProductList">
+    <ion-card (click)="gotoDetails.emit(k)">
+      <div style="padding: auto;height:180px ">
+        <img style="width:100%" src="{{k.images[0].src}}" />
+      </div>
+      <ion-card-content>
+        <ion-card-title>
+          {{k.categories[0].name}}
+        </ion-card-title>
+        <p>
+          {{k.name}}
+        </p>
+        <p style="color:#cf000f; font-weight:900">Rp {{k.price| number}}</p>
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+</ion-row>

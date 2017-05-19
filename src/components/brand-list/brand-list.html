@@ -1,0 +1,11 @@
+<!--
+  Generated template for the BrandList component.
+
+  See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
+  for more info on Angular 2 Components.
+-->
+<ion-searchbar [(ngModel)]="searchTerm" (ionInput)="setFilteredItems()"></ion-searchbar>
+<ion-item-group *ngFor="let group of groupedBrands">
+  <ion-item-divider light>{{group.letter}}</ion-item-divider>
+  <ion-item *ngFor="let contact of group.contacts" (click)="gotoProducts.emit(contact)">{{contact}}</ion-item>
+</ion-item-group>

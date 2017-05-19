@@ -1,0 +1,27 @@
+page-home .card-ios, page-home .card-md{
+        width: calc(100% - 0px) !important;
+    }
+
+    ion-app.md [padding], ion-app.md [padding] .scroll-content{
+        padding: 0;
+    }
+page-home {
+    .banner {
+        padding-top: 6px;
+
+        .swiper-slide {
+            width: 100% !important;
+            background: white;
+        }
+        img {
+            width: 100%;
+            height: 250px;
+        }
+        .card-md {
+            margin: 0;
+        }
+        .card-ios {
+            margin: 0;
+        }
+    }
+}
