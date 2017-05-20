@@ -1,4 +1,8 @@
 product-show {
+    [col-5]{
+        max-width: 50%;
+        flex: 0 0 50%
+    }
     .card-md {
         margin: 0;
         width: 100%;

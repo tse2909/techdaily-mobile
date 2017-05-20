@@ -23,7 +23,7 @@ export class BrandListComponent {
   constructor() { }
 
   ngOnInit() {
-    this.products.map(k => this.brandsArray.push(k.categories[0].name));
+    this.products.map(k => this.brandsArray.push(k.tags[0].name));
     console.log(this.brandsArray);
     // var result = [];
     //this.brandsArray.forEach(function (item) {

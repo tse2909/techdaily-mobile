@@ -58,7 +58,6 @@ import { BrandPage,
     ProductAllPage,
     ProductDetailPage,
 
-
     // components
     BrandListComponent,
     CartButtonComponent,
@@ -70,7 +69,7 @@ import { BrandPage,
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp, { tabsPlacement: 'top' }),
+    IonicModule.forRoot(MyApp, { tabsPlacement: 'top', tabsHideOnSubPages: true }),
     StoreModule.provideStore(reducer),
     EffectsModule.run(ShopEffects),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
@@ -87,7 +86,8 @@ import { BrandPage,
     CheckoutPage,
     HomePage,
     ProductAllPage,
-    ProductDetailPage
+    ProductDetailPage,
+  
 
 
 

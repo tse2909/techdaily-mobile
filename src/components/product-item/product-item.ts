@@ -11,11 +11,11 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   templateUrl: 'product-item.html'
 })
 export class ProductItemComponent {
-  addtoCartData : {id: string, qty: number};
+  addtoCartData: { id: string, qty: number };
 
   @Input() productDetail;
   text: string;
-  
+
   @Output()
   addToCart: EventEmitter<any> = new EventEmitter<any>();
 
@@ -25,19 +25,24 @@ export class ProductItemComponent {
     console.log('Hello ProductItem Component');
     this.text = 'Hello World';
 
-    for(let i = 1; i < 11; i ++){
+    for (let i = 1; i < 11; i++) {
       this.quantities.push(i);
     }
   }
 
-  ngOnInit(){
-      if(this.productDetail.quantity == 'null'){
+  ngOnInit() {
+    if (this.productDetail.quantity == 'null') {
       this.productDetail.quantity = 1;
     }
   }
-  
-  addtoCartClick(){
-    var data = {id:this.productDetail.id, quantity: this.quantity}
+
+  addtoCartClick() {
+    var data = { id: this.productDetail.id, quantity: this.quantity }
     this.addToCart.emit(data);
-}
+  }
+
+  onQtyChange($event) {
+    console.log($event);
+    console.log(this.quantity);
+  }
 }

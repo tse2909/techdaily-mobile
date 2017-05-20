@@ -3,16 +3,18 @@ product-slide {
      margin: 10px;
       p{
         line-height:1.4;
-        font-size: 1.3rem
+        font-size: 1rem
         }
     }
  .card-ios{
      margin: 10px;
       p{
         line-height:1.4;
-        font-size: 1.3rem
+        font-size: 1rem
         }
     } 
+
+    
 .slide-product{
 
     
@@ -48,7 +50,7 @@ product-slide {
     .title{
         font-size: 1.8rem;
         font-weight: 900;
-        padding: 20px;
+        padding: 20px 0px 0 20px;
     }
     .title-right{
         font-size: 1.4rem;
@@ -59,7 +61,12 @@ product-slide {
         top: 4px;
         text-decoration: underline
     }
-
+    .card-title-md{
+        font-size: 1.8rem;
+        margin: 0;
+        color: #000;
+        padding:0px 0 4px 0;
+    }
     .swiper-pagination-fraction, .swiper-pagination-custom, .swiper-container-horizontal > .swiper-pagination-bullets{
         display: none;
     }

@@ -1,21 +1,40 @@
-page-home .card-ios, page-home .card-md{
-        width: calc(100% - 0px) !important;
-    }
+page-home .card-ios,
+page-home .card-md {
+    width: calc(100% - 0px) !important;
+}
 
-    ion-app.md [padding], ion-app.md [padding] .scroll-content{
-        padding: 0;
+ion-app.md [padding],
+ion-app.md [padding] .scroll-content {
+    padding: 0;
+}
+
+ion-app.ios [padding],
+ion-app.ios [padding] .scroll-content {
+    padding: 0;
+}
+.tabs-md .tab-button {
+        min-height: 4.8rem;
     }
 page-home {
+    img {
+        max-width: 70%;
+        margin: auto;
+    }
+    
+    .card-content-md {
+        padding: 13px 2px 13px 2px;
+    }
+    .card-md {
+        margin: 10px 10px 10px 0px;
+    }
     .banner {
-        padding-top: 6px;
-
         .swiper-slide {
             width: 100% !important;
             background: white;
         }
         img {
             width: 100%;
-            height: 250px;
+            height: 180px;
         }
         .card-md {
             margin: 0;

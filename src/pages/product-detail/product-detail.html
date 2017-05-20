@@ -8,7 +8,7 @@
 
   <ion-navbar>
     <button ion-button menuToggle> <ion-icon name="menu"></ion-icon> </button>
-    <ion-title>{{product.name}}</ion-title>
+    <ion-title>{{product.name | slice:0:30}}</ion-title>
     <!--<button ion-button icon-only start menuToggle right>
             <ion-icon name="cart"></ion-icon>
           </button>-->

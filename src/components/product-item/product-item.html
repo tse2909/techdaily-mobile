@@ -28,7 +28,7 @@
   <ion-item>
     <ion-select [(ngModel)]="quantity">
       <!--<ion-label>1</ion-label>-->
-      <ion-option *ngFor="let quantity of quantities" >{{quantity}}</ion-option>
+      <ion-option #quantity (ionChange)="onQtyChange(quantity.value)" *ngFor="let quantity of quantities" >{{quantity}}</ion-option>
     </ion-select>
   </ion-item>
   <button ion-fab (click)="addtoCartClick()">BUY NOW</button>

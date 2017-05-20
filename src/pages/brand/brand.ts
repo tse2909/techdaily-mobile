@@ -23,7 +23,7 @@ products: Observable<any[]>;
   
     gotoProducts(filter) {
       let data = {
-        type: 'CATEGORIES',
+        type: 'TAGS',
         filter: filter
       }
         this.navCtrl.push(ProductAllPage, { data })

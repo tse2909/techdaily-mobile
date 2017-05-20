@@ -75,7 +75,7 @@ export function getCalculatedCartList() {
                     return {
                         id: productId,
                         title: products[productId].name,
-                        brand: products[productId].categories[0].name,
+                        brand: products[productId].tags[0].name,
                         image: products[productId].images[0].src,
                         price: products[productId].price,
                         quantity: cart.quantityById[productId]
@@ -125,7 +125,7 @@ export function getProductbyId(productId) {
                 return {
                     id: products[productId].id,
                     name: products[productId].name,
-                    category: products[productId].categories[0].name,
+                    category: products[productId].tags[0].name,
                     image: products[productId].images[0].src,
                     price: products[productId].price,
                     description: products[productId].description,

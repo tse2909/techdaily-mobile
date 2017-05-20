@@ -26,6 +26,8 @@ export class ProductDetailPage {
   public product;
   public productId;
   qty: number = 1;
+
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private app: App, public store: Store<any>, public loadingCtrl: LoadingController, public toastCtrl: ToastController) {
     this.products = store.let(getProductsAsArry());
     console.log(this.products);

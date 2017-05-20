@@ -31,6 +31,7 @@ export class ProductAllPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public store: Store<any>) {
 
     this.data = this.navParams.get('data');
+    console.log(this.data);
     this.products = store.let(getProductsAsArry());
     console.log(this.products);
     console.log(this.data.type);
@@ -54,13 +55,13 @@ export class ProductAllPage {
       }
     } else if (this.data.type === 'TAGS') {
       this.brandProductList = this.brandProducts.filter(item =>
-        item.tags.length ? item.tags[0].name === this.data.filter : '' === this.data.filter);
+        item.tags.length ? item.tags[0].name.toUpperCase() === this.data.filter.toUpperCase() : '' === this.data.filter.toUpperCase());
       console.log(this.brandProductList);
       this.sortedData = this.brandProductList;
 
     } else if (this.data.type === 'CATEGORIES') {
       this.brandProductList = this.brandProducts.filter(item =>
-        item.categories[0].name === this.data.filter);
+        item.categories[0].name.toUpperCase() === this.data.filter.toUpperCase());
       console.log(this.brandProductList);
       this.sortedData = this.brandProductList;
 
