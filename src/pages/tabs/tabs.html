@@ -1,11 +1,11 @@
 <ion-tabs #ionTabs [scrollable-tabs]="ionTabs" [opts]="scrollableTabsopts">
   <ion-tab [root]="tab1Root" tabTitle="Welcome"></ion-tab>
   <ion-tab [root]="productAllRoot" tabTitle="Laptops" [rootParams]="{data:{type:'CATEGORIES', filter:'LAPTOP'}}"></ion-tab>
-  <ion-tab [root]="productAllRoot" tabTitle="Desktops"></ion-tab>
-  <ion-tab [root]="tab3Root" tabTitle="Monitors"></ion-tab>
-  <ion-tab [root]="tab3Root" tabTitle="Accessories"></ion-tab>
-  <ion-tab [root]="tab3Root" tabTitle="Gaming"></ion-tab>
-  <ion-tab [root]="tab3Root" tabTitle="Components"></ion-tab>
+  <ion-tab [root]="productAllRoot" tabTitle="Desktops" [rootParams]="{data:{type:'CATEGORIES', filter:'DESKTOP'}}"></ion-tab>
+  <ion-tab [root]="productAllRoot" tabTitle="Monitors" [rootParams]="{data:{type:'CATEGORIES', filter:'MONITOR'}}"></ion-tab>
+  <ion-tab [root]="productAllRoot" tabTitle="Accessories" [rootParams]="{data:{type:'CATEGORIES', filter:'ACCESSORIES'}}"></ion-tab>
+  <ion-tab [root]="productAllRoot" tabTitle="Gaming" [rootParams]="{data:{type:'CATEGORIES', filter:'GAMING'}}"></ion-tab>
+  <ion-tab [root]="productAllRoot" tabTitle="Components" [rootParams]="{data:{type:'CATEGORIES', filter:'COMPONENT'}}"></ion-tab>
   <!--<ion-tab [root]="tab3Root" tabTitle="Contact" tabIcon="contacts"></ion-tab>
   <ion-tab [root]="tab3Root" tabTitle="Contact" tabIcon="contacts"></ion-tab>-->
 </ion-tabs>
