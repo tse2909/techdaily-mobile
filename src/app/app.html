@@ -19,9 +19,9 @@
              <ion-list id="sidenav">
                 <!-- other menu items will go here -->
                 <ion-item (click)="menuItemHandler()">Category</ion-item>
-                <ion-item submenu-item *ngIf="showSubmenu" menuClose (click)="openProduct('Toner')">Laptops</ion-item>
-                <ion-item submenu-item *ngIf="showSubmenu" menuClose (click)="openProduct('Moisturizer')">Desktops</ion-item>
-                <ion-item submenu-item *ngIf="showSubmenu" menuClose (click)="openProduct('Sun Block')">Monitors</ion-item>
+                <ion-item submenu-item *ngIf="showSubmenu" menuClose (click)="gotoProducts('Laptop')">Laptops</ion-item>
+                <ion-item submenu-item *ngIf="showSubmenu" menuClose (click)="gotoProducts('Desktop')">Desktops</ion-item>
+                <ion-item submenu-item *ngIf="showSubmenu" menuClose (click)="gotoProducts('Monitor')">Monitors</ion-item>
                 <!-- other menu items will go here -->
             </ion-list>
         </ion-list>

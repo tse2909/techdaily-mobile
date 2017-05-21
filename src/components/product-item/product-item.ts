@@ -28,6 +28,7 @@ export class ProductItemComponent {
     for (let i = 1; i < 11; i++) {
       this.quantities.push(i);
     }
+    console.log(this.quantities);
   }
 
   ngOnInit() {

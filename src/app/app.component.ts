@@ -40,8 +40,16 @@ export class MyApp {
 
   }
   openPage(p) {
-    this.rootPage = p;
+    this.nav.push(p);
   }
+
+      gotoProducts(filter){
+        let data = {
+            type: 'CATEGORIES',
+            filter: filter
+        }
+        this.nav.push(ProductAllPage, { data })
+    }
   menuItemHandler(): void {
     this.showSubmenu = !this.showSubmenu;
   }

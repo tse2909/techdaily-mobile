@@ -12,7 +12,7 @@ ion-app.ios [padding],
 ion-app.ios [padding] .scroll-content {
     padding: 0;
 }
-.tabs-md .tab-button {
+.tabs-md .tab-button,.tabs-ios .tab-button {
         min-height: 4.8rem;
     }
 page-home {
@@ -21,10 +21,10 @@ page-home {
         margin: auto;
     }
     
-    .card-content-md {
+    .card-content-md,.card-content-ios {
         padding: 13px 2px 13px 2px;
     }
-    .card-md {
+    .card-md,.card-ios {
         margin: 10px 10px 10px 0px;
     }
     .banner {

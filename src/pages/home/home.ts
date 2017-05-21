@@ -13,6 +13,8 @@ import { ProductAllPage } from '../product-all/product-all';
 import { CartPage } from '../cart/cart';
 
 
+import { TabsPage } from '../tabs/tabs';
+
 
 @Component({
   selector: 'page-home',
@@ -39,6 +41,14 @@ gotoDetails(product) {
     gotoProducts(filter) {
         let data = {
             type: 'ALL',
+            filter: filter
+        }
+        this.navCtrl.push(ProductAllPage, { data })
+    }
+
+    gotoProductsCategory(filter){
+        let data = {
+            type: 'CATEGORIES',
             filter: filter
         }
         this.navCtrl.push(ProductAllPage, { data })

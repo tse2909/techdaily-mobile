@@ -1,32 +1,15 @@
 product-show {
-
-    .card-title-md{
+    
+    .card-title-md,
+    .card-title-ios {
         font-size: 1.8rem;
     }
-    [col-5]{
+    [col-5] {
         max-width: 50%;
         flex: 0 0 50%;
         padding: 0;
     }
-    .card-md {
-        margin: 0;
-        width: 100%;
-        padding-top: 10px;
-        box-shadow: none;
-        img {
-            max-width: 100%;
-            height: auto;
-            position: relative;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        p{
-            font-size: 1.2rem;
-        }
-    }
-    .content-md {
-        background-color: #fff !important;
-    }
+    .card-md,
     .card-ios {
         margin: 0;
         width: 100%;
@@ -39,7 +22,11 @@ product-show {
             top: 50%;
             transform: translateY(-50%);
         }
+        p {
+            font-size: 1.2rem;
+        }
     }
+    .content-md,
     .content-ios {
         background-color: #fff !important;
     }
