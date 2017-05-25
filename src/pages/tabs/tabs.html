@@ -1,11 +1,9 @@
 <ion-tabs #ionTabs [scrollable-tabs]="ionTabs" [opts]="scrollableTabsopts">
-  <ion-tab [root]="tab1Root" tabTitle="Welcome"></ion-tab>
+  <ion-tab [root]="homeRoot" tabTitle="Welcome"></ion-tab>
   <ion-tab [root]="productAllRoot" tabTitle="Laptops" [rootParams]="{data:{type:'CATEGORIES', filter:'LAPTOP'}}"></ion-tab>
   <ion-tab [root]="productAllRoot" tabTitle="Desktops" [rootParams]="{data:{type:'CATEGORIES', filter:'DESKTOP'}}"></ion-tab>
   <ion-tab [root]="productAllRoot" tabTitle="Monitors" [rootParams]="{data:{type:'CATEGORIES', filter:'MONITOR'}}"></ion-tab>
   <ion-tab [root]="productAllRoot" tabTitle="Accessories" [rootParams]="{data:{type:'CATEGORIES', filter:'ACCESSORIES'}}"></ion-tab>
   <ion-tab [root]="productAllRoot" tabTitle="Drive" [rootParams]="{data:{type:'CATEGORIES', filter:'DRIVE'}}"></ion-tab>
   <ion-tab [root]="productAllRoot" tabTitle="Keyboard" [rootParams]="{data:{type:'CATEGORIES', filter:'KEYBOARD'}}"></ion-tab>
-  <!--<ion-tab [root]="tab3Root" tabTitle="Contact" tabIcon="contacts"></ion-tab>
-  <ion-tab [root]="tab3Root" tabTitle="Contact" tabIcon="contacts"></ion-tab>-->
 </ion-tabs>

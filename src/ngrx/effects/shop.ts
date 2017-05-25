@@ -19,8 +19,6 @@ export class ShopEffects {
             this._productService.getProduct().map(res => console.log(res))
         }
 
-    
-
     @Effect()
     load$ = this._actions$
         .ofType(REQUEST_PRODUCTS)
@@ -37,7 +35,7 @@ export class ShopEffects {
     checkout$ = this._actions$
         .ofType(CHECKOUT_REQUEST)
         .map(action => JSON.stringify(action.payload))
-        // .switchMap(payload => shop.default.buyProducts(payload, 300))
+        .switchMap((data) => this._productService.postOrders(data))
         .map(res => {
             return {
                 type: CHECKOUT_SUCCESS,

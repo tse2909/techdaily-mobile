@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import {getProducts, addToCart} from '../../ngrx/actions/products';
-import {getProductsAsArry, getCalculatedCartList} from '../../ngrx/reducers';
+// import {getProducts, addToCart} from '../../ngrx/actions/products';
 import { Subject } from 'rxjs';
-import {Store, Action} from '@ngrx/store';
-import 'rxjs/add/operator/filter';
+import { Store, Action } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { ProductDetailPage } from '../product-detail/product-detail';
-
+import { getProductsAsArry } from '../../ngrx/reducers';
+import { ProductDetailPage } from '../../pages';
+import 'rxjs/add/operator/filter';
 /*
   Generated class for the ProductShow page.
 
@@ -29,15 +28,12 @@ export class ProductAllPage {
   products: Observable<any[]>;
   actions$ = new Subject<Action>();
   constructor(public navCtrl: NavController, public navParams: NavParams, public store: Store<any>) {
-
     this.data = this.navParams.get('data');
     console.log(this.data);
     this.products = store.let(getProductsAsArry());
     console.log(this.products);
     console.log(this.data.type);
-
     this.products.subscribe(k => this.brandProducts = k);
-
     if (this.data.type === 'ALL') {
       if (this.data.filter === 'HOT') {
         this.brandProductList = this.brandProducts.sort(function (a, b) {
@@ -78,7 +74,6 @@ export class ProductAllPage {
 
   setFilteredItems() {
     var products = this.brandProductList;
-
     this.brandProductList = this.sortedData.filter(k => k.name.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1)
     console.log(this.brandProductList);
   }

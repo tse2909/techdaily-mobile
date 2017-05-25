@@ -6,7 +6,6 @@ export const CHECKOUT_REQUEST = 'CHECKOUT_REQUEST'
 export const CHECKOUT_SUCCESS = 'CHECKOUT_SUCCESS'
 export const CHECKOUT_FAILURE = 'CHECKOUT_FAILURE'
 
-
 export interface CartState {
     productIds: any[];
     quantityById: any;
@@ -58,7 +57,6 @@ export function cartReducer(state = initialState, action: Action): CartState {
                         )
                     }
                 );
-
         case CHECKOUT_SUCCESS:
             return initialState;
         default:

@@ -12,7 +12,7 @@
     <!--<button ion-button icon-only start menuToggle right>
             <ion-icon name="cart"></ion-icon>
           </button>-->
-    <cart-button [cart]="(cart | async)"></cart-button>
+    <cart-button [cart]="(cart | async)" (gotoCarts)="gotoCarts()"></cart-button>
 
 
   </ion-navbar>

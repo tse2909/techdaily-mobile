@@ -7,8 +7,7 @@ import { HomePage,
   BrandPage,
   CartPage,
   TabsPage,
-ProductAllPage } from '../pages';
-
+  ProductAllPage } from '../pages';
 
 @Component({
   templateUrl: 'app.html'
@@ -18,7 +17,7 @@ export class MyApp {
 
   pages: Array<{ title: string, component: any }>;
   rootPage: any = TabsPage;
-  
+
   private homePage;
   private brandPage;
   private cartPage;
@@ -31,25 +30,26 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
-  
+
 
     this.brandPage = BrandPage;
     this.homePage = HomePage;
     this.cartPage = CartPage;
     this.productPage = ProductAllPage;
-
   }
+
   openPage(p) {
     this.nav.push(p);
   }
 
-      gotoProducts(filter){
-        let data = {
-            type: 'CATEGORIES',
-            filter: filter
-        }
-        this.nav.push(ProductAllPage, { data })
+  gotoProducts(filter) {
+    let data = {
+      type: 'CATEGORIES',
+      filter: filter
     }
+    this.nav.push(ProductAllPage, { data })
+  }
+  
   menuItemHandler(): void {
     this.showSubmenu = !this.showSubmenu;
   }

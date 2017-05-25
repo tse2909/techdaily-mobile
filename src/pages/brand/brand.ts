@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import {getProductsAsArry} from '../../ngrx/reducers';
-import {Store, Action} from '@ngrx/store';
+import { Store, Action } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-
-import { ProductAllPage } from '../product-all/product-all';
+import { getProductsAsArry, getCalculatedCartList } from '../../ngrx/reducers';
+import { ProductAllPage } from '../../pages';
 /*
   Generated class for the Brand page.
 
@@ -16,9 +15,11 @@ import { ProductAllPage } from '../product-all/product-all';
   templateUrl: 'brand.html'
 })
 export class BrandPage {
+cart: any;
 products: Observable<any[]>;
   constructor(public navCtrl: NavController, public navParams: NavParams, public store: Store<any>) {
     this.products = store.let(getProductsAsArry());
+    this.cart = this.store.let(getCalculatedCartList());
   }
   
     gotoProducts(filter) {
@@ -28,5 +29,4 @@ products: Observable<any[]>;
       }
         this.navCtrl.push(ProductAllPage, { data })
     }
-
 }

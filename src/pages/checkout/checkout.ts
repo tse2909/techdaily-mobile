@@ -1,7 +1,13 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ProductService } from '../../providers/product-service';
+
+import { Subject } from 'rxjs';
+import { Action, Store } from '@ngrx/store';
+
+import { checkout } from '../../ngrx/actions/cart';
+
+
 /*
   Generated class for the CheckoutPage page.
 
@@ -19,35 +25,33 @@ interface prod {
   templateUrl: 'checkout.html'
 })
 
-
-
 export class CheckoutPage {
+  action$ = new Subject<Action>();
+  checkoutAction = checkout;
   cart;
   cartCount;
   cartTotal;
   line_items: prod[] = [];
+  shipping_lines=[];
   shipping;
   billing;
   data;
 
   checkoutForm: FormGroup;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, private _productService: ProductService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, private store: Store<any>) {
+    this.action$.subscribe(store);
     this.checkoutForm = formBuilder.group({
-      firstName: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-      lastName: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+      first_name: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+      last_name: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
       email: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
       phone: ['', Validators.compose([Validators.maxLength(30), Validators.required])],
-      address1: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-      address2: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+      address_1: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+      address_2: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
       city: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
       state: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-      postal: ['', Validators.compose([Validators.maxLength(30), Validators.required])],
+      postcode: ['', Validators.compose([Validators.maxLength(30), Validators.required])],
       country: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
     });
-
-
-
-
 
     this.cart = this.navParams.get('cart');
     console.log(this.cart);
@@ -69,24 +73,29 @@ export class CheckoutPage {
   }
 
   Checkout() {
-
-
     for (let i = 0; i < this.cart.length; i++) {
       this.line_items.push({
         product_id: this.cart[i].id,
         quantity: this.cart[i].quantity
       })
     }
+    this.shipping_lines.push({
+      method_id: 'flat_rate',
+      method_title: 'Flat Rate',
+      total: 10
+    })
     this.billing = this.checkoutForm.value;
     this.shipping = this.checkoutForm.value;
 
-
-
     console.log(this.checkoutForm.value);
     console.log(this.line_items);
-    this.data = Object.assign({ billing: this.billing }, { shipping: this.shipping }, { line_item: this.line_items });
+    this.data = Object.assign({payment_method: 'bacs'},{payment_method_title: 'Direct Bank Transfer'},{set_paid: true},{ billing: this.billing }, { shipping: this.shipping }, { line_items: this.line_items });
+    var orders = {
+      data: this.data
+    };
     console.log(this.data);
     console.log(JSON.stringify(this.data));
+    this.action$.next(this.checkoutAction(orders));
   }
 
 }

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController } from 'ionic-angular';
-import {getProductsAsArry, getCalculatedCartList, getCartState, getCartCnt} from '../../ngrx/reducers';
-import {getProducts, addToCart, removeItem} from '../../ngrx/actions/products';
 import { Subject } from 'rxjs';
-import {Store, Action} from '@ngrx/store';
-import { CheckoutPage } from '../checkout/checkout';
+import { Store, Action } from '@ngrx/store';
+import { getCalculatedCartList, getCartCnt } from '../../ngrx/reducers';
+import { removeItem } from '../../ngrx/actions/products';
+import { CheckoutPage } from '../../pages';
 /*
   Generated class for the Cart page.
 
@@ -19,7 +19,6 @@ export class CartPage {
   cart: any;
   actions$ = new Subject<Action>();
 
-
   cartState: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, private store: Store<any>, public loadingCtrl: LoadingController) {
     this.actions$.subscribe(store);
@@ -31,9 +30,8 @@ export class CartPage {
 
   ionViewDidLoad() {
   }
+
   deleteItem($event) {
-
-
     let loading = this.loadingCtrl.create({
       content: 'Deleting item ...'
     });

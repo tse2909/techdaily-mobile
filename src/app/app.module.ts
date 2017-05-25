@@ -4,23 +4,13 @@ import { HttpModule } from '@angular/http';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { AboutPage } from '../pages/about/about';
-
-import { ContactPage } from '../pages/contact/contact';
-
-import { TabsPage } from '../pages/tabs/tabs';
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ProductService } from '../providers/product-service';
 
 // NGRX
 import { reducer } from '../ngrx/reducers/index';
-import { cartReducer } from '../ngrx/reducers/cart';
-import { productsReducer } from '../ngrx/reducers/products';
-import { StoreModule, combineReducers } from '@ngrx/store';
-import { compose } from '@ngrx/core/compose';
-import { localStorageSync } from 'ngrx-store-localstorage';
+import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ShopEffects } from '../ngrx/effects/shop';
@@ -39,17 +29,13 @@ import { BrandPage,
   CheckoutPage,
   HomePage,
   ProductAllPage,
-  ProductDetailPage } from '../pages';
+  ProductDetailPage,
+  TabsPage } from '../pages';
 
 
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
-
-    TabsPage,
-
     // pages
     BrandPage,
     CartPage,
@@ -57,7 +43,7 @@ import { BrandPage,
     HomePage,
     ProductAllPage,
     ProductDetailPage,
-
+    TabsPage,
     // components
     BrandListComponent,
     CartButtonComponent,
@@ -78,8 +64,6 @@ import { BrandPage,
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
     TabsPage,
     BrandPage,
     CartPage,
@@ -87,10 +71,6 @@ import { BrandPage,
     HomePage,
     ProductAllPage,
     ProductDetailPage,
-  
-
-
-
   ],
   providers: [
     StatusBar,

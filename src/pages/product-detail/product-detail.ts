@@ -1,11 +1,11 @@
 import { Component} from '@angular/core';
 import { NavController, NavParams, App, LoadingController, ToastController  } from 'ionic-angular';
-import {getProducts, addToCart} from '../../ngrx/actions/products';
-import {getProductsAsArry, getCalculatedCartList, getProductWithCart} from '../../ngrx/reducers';
 import { Subject } from 'rxjs';
-import {Store, Action} from '@ngrx/store';
-
+import { Store, Action } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
+import { getProducts, addToCart } from '../../ngrx/actions/products';
+import { getProductsAsArry, getCalculatedCartList, getProductWithCart } from '../../ngrx/reducers';
+import { CartPage } from '../../pages';
 /*
   Generated class for the ProductDetail page.
 
@@ -32,10 +32,8 @@ export class ProductDetailPage {
     this.products = store.let(getProductsAsArry());
     console.log(this.products);
     this.cart = store.let(getCalculatedCartList());
-
     this.actions$.subscribe(store);
     this.actions$.next(getProducts());
-
     this.product = this.navParams.get('product');
     this.productId = this.product.id;
     console.log(this.productId);
@@ -51,16 +49,13 @@ export class ProductDetailPage {
     loading.present();
     setTimeout(() => {
       loading.dismiss();
-
       this.actions$.next(this.addToCartAction($event));
       this.cart = this.store.let(getCalculatedCartList());
-
         let toast = this.toastCtrl.create({
           message: 'Item was added successfully',
           duration: 1000
         });
-        toast.present();
-      
+        toast.present(); 
     }, 300);
   }
 
@@ -69,5 +64,7 @@ export class ProductDetailPage {
     console.log('ionViewDidLoad ProductDetailPage');
   }
 
-
+  gotoCarts(){
+    this.navCtrl.push(CartPage, {})
+  }
 }

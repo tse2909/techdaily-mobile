@@ -1,7 +1,5 @@
-
-import {Action} from '@ngrx/store';
-import {ADD_TO_CART, REQUEST_PRODUCTS, REMOVE_ITEM,UPDATE_ITEM, IProduct} from '../reducers/products';
-
+import { Action } from '@ngrx/store';
+import { ADD_TO_CART, REQUEST_PRODUCTS, REMOVE_ITEM,UPDATE_ITEM } from '../reducers/products';
 
 export const getProducts = () => {
     return <Action>{ type: REQUEST_PRODUCTS };
