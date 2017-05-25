@@ -19,6 +19,7 @@ contentHeaders.append('X-Requested-With', 'XMLHttpRequest');
 
 @Injectable()
 export class ProductService {
+  
   rooturl = "https://techdaily-api.herokuapp.com";
     // rooturl = "http://localhost:8080";
 
