@@ -19,9 +19,8 @@ contentHeaders.append('X-Requested-With', 'XMLHttpRequest');
 
 @Injectable()
 export class ProductService {
-  
+
   rooturl = "https://techdaily-api.herokuapp.com";
-    // rooturl = "http://localhost:8080";
 
   constructor(public http: Http) {
     console.log('Hello ImageService Provider');
