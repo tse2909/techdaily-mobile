@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Subject } from 'rxjs';
@@ -36,9 +36,10 @@ export class CheckoutPage {
   shipping;
   billing;
   data;
-
+  shippingCost:any = "Fill address form";
+submitAttempt= false;
   checkoutForm: FormGroup;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, private store: Store<any>) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, private store: Store<any>, private loadingCtrl: LoadingController) {
     this.action$.subscribe(store);
     this.checkoutForm = formBuilder.group({
       first_name: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
@@ -73,6 +74,17 @@ export class CheckoutPage {
   }
 
   Checkout() {
+    this.submitAttempt = true;
+  if(!this.checkoutForm.valid){
+    
+  } else {
+  let loading = this.loadingCtrl.create({
+      content: 'Deleting item ...'
+    });
+    loading.present();
+    setTimeout(function() {
+      loading.dismiss();
+    }, 1500);
     for (let i = 0; i < this.cart.length; i++) {
       this.line_items.push({
         product_id: this.cart[i].id,
@@ -96,6 +108,6 @@ export class CheckoutPage {
     console.log(this.data);
     console.log(JSON.stringify(this.data));
     this.action$.next(this.checkoutAction(orders));
-  }
+  }}
 
 }

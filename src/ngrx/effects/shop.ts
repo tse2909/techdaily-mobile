@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { App } from 'ionic-angular';
 import { Actions, Effect } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 
@@ -8,14 +9,15 @@ import {REQUEST_PRODUCTS, RECEIVED_PRODUCTS} from '../reducers/products';
 import {CHECKOUT_REQUEST, CHECKOUT_SUCCESS} from '../reducers/cart';
 // import * as shop from '../api/shop';
 import { ProductService } from '../../providers/product-service';
-
+import { HomePage } from '../../pages';
 @Injectable()
 export class ShopEffects {
 
     constructor(
         private _productService: ProductService,
         private _actions$: Actions,
-        private _store: Store<any>) { 
+        private _store: Store<any>,
+        private app: App) { 
             this._productService.getProduct().map(res => console.log(res))
         }
 
@@ -41,5 +43,9 @@ export class ShopEffects {
                 type: CHECKOUT_SUCCESS,
                 payload: res
             };
+           
+        })
+        .do(()=>{
+             this.app.getActiveNav().setRoot(HomePage);
         });
 }

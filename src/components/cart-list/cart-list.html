@@ -16,12 +16,12 @@
       </ion-card-header>
       <ion-card-content>
         <!--<button ion-button icon-only>-->
-        {{c.title}} <br>
+        <div [innerHtml]="c.title"></div>
         <!--</button>-->
         Rp.{{c.price | number}} <br><br>
         <!--<div>Qty</div> -->
         <ion-item>
-          <ion-select [(ngModel)]="c.quantity">
+          <ion-select #qty (ionChange)="changeQty.emit({product:c, newQty:qty.value})" [(ngModel)]="c.quantity">
             <!--<ion-label>1</ion-label>-->
             <ion-label>Qty</ion-label>
             <ion-option>1</ion-option>

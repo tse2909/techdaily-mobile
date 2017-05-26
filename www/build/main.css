@@ -24983,7 +24983,7 @@ product-item .card-md p {
 product-item .card-ios {
   margin-bottom: 100px;
   width: calc(100% - 0px);
-  margin: 62px 0px 62px 0px;
+  margin: 46px 0px 62px 0px;
 }
 
 product-item .card-ios p {
@@ -25111,13 +25111,73 @@ product-slide .slide-product .swiper-pagination-fraction, product-slide .slide-p
   display: none;
 }
 
-page-checkout .card-md {
+page-checkout ion-fab {
+  width: 102%;
+}
+
+page-checkout ion-fab[center] {
+  left: 0;
+  margin-left: 0px;
+}
+
+page-checkout .fab {
+  border-radius: 0;
+  width: 30%;
+  left: -3px;
+  float: left;
+  line-height: 20px;
+}
+
+page-checkout ion-fab[bottom] {
+  bottom: -3px;
+}
+
+page-checkout .card-ios:last-child, page-checkout .card-md:last-child {
+  margin-bottom: 60px;
+}
+
+page-checkout .title-right {
+  font-size: 1.4rem;
+  font-weight: 400;
+  padding: 20px;
+  position: absolute;
+  right: 10px;
+  top: 4px;
+  text-decoration: underline;
+}
+
+page-checkout .title-card {
+  font-size: 1.8rem;
+  font-weight: 900;
+  padding: 20px 0px 0 20px;
+}
+
+page-checkout .card-md, page-checkout .card-ios {
   width: calc(100% - 0px);
   margin: 10px 0px 10px 0px;
 }
 
+page-checkout .card-header-ios + .card-content-ios, page-checkout .card-ios .item + .card-content-ios,
+page-checkout .card-header-md + .card-content-md, page-checkout .card-md .item + .card-content-md {
+  margin-top: -30px;
+}
+
 page-checkout .button-md {
   background-color: #000;
+}
+
+page-checkout .invalid {
+  border-bottom: 1px solid #ea6153;
+}
+
+page-checkout .item-ios.item-label-stacked .text-input, page-checkout .item-ios.item-label-floating .text-input,
+page-checkout .item-md.item-label-stacked .text-input, page-checkout .item-ios.item-label-floating .text-input {
+  border-bottom: 1px solid #dcdbdb;
+}
+
+page-checkout a[disabled], page-checkout button[disabled], page-checkout [ion-button][disabled] {
+  background: #d3d3d3;
+  opacity: 1;
 }
 
 page-home .card-ios,

@@ -3,7 +3,7 @@ import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { Subject } from 'rxjs';
 import { Store, Action } from '@ngrx/store';
 import { getCalculatedCartList, getCartCnt } from '../../ngrx/reducers';
-import { removeItem } from '../../ngrx/actions/products';
+import { removeItem, updateItem } from '../../ngrx/actions/products';
 import { CheckoutPage } from '../../pages';
 /*
   Generated class for the Cart page.
@@ -46,6 +46,20 @@ export class CartPage {
 
   gotoCheckout(cart) {
     this.navCtrl.push(CheckoutPage, {cart})
+  }
+
+  changeQty($event){
+    let loading = this.loadingCtrl.create({
+      content: 'Updating item ...'
+    });
+    loading.present();
+
+    setTimeout(() => {
+      this.actions$.next(updateItem($event));
+      this.cart = this.store.let(getCalculatedCartList());
+      loading.dismiss();
+    }, 1000);
+
   }
 
 }

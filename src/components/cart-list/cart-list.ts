@@ -16,6 +16,8 @@ export class CartListComponent implements OnChanges {
 
   @Output() deleteItem = new EventEmitter<any>();
   @Output() gotoCheckout = new EventEmitter<any>();
+  @Output() changeQty = new EventEmitter<any>();
+  
   cartCount: number = 0;
   cartTotal: number = 0;
 

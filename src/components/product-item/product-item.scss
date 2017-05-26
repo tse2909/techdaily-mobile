@@ -1,94 +1,79 @@
-  .toolbar-title-ios{
+  .toolbar-title-ios {
       font-size: 1.5rem;
       font-weight: 400;
       padding: 0;
   }
-
-.toolbar-title-md{
+  
+  .toolbar-title-md {
       font-size: 1.5rem !important;
       font-weight: 400;
       padding: 0;
   }
-
-product-item {
-    ion-card img {
-        width: 80%;
-        margin: auto;
-        // height: 300px;
-        // margin-top: 50px;
-    }
-
-    .card-title-ios{
-    font-weight: 900;
-    font-size: 1.5rem;
-    padding: 5px 0 0px 0;
-    text-transform: uppercase;
-    }
-
-    .card-title-md{
-    font-weight: 900;
-    font-size: 1.5rem;
-    padding: 5px 0 0px 0;
-    text-transform: uppercase;
-    }
-
-    ion-fab{
-        width: 110%;
-    }
-
-    ion-fab[center]{
-        left:0;
-    }
-
-    .fab{
-        border-radius: 0;
-        width: 75%;
-        left: -3px;
-    }
-
-    ion-fab[bottom]{
-        bottom:-3px;
-    }
-
-    .item-block{
-        width:25%;
-        float:left;
-        min-height: 5.5rem;
-    }
-
-    ion-select{
-        max-width : 100%;
-    }
-
-    .select-ios{
-        padding: 11px 10px 11px 36px;
-    }
-
-    .select-md{
-        padding: 11px 10px 11px 36px;
-    }
-
-    ion-card-content img{
-        display:none;
-    }
-
-    .card-md {
-        margin-bottom: 100px;
-        width: calc(100% - 0px);
-        margin: 62px 0px 62px 0px;
-
-        p{
-            font-size: 1.3rem;
-        }
-    }
-
-        .card-ios {
-        margin-bottom: 100px;
-        width: calc(100% - 0px);
-        margin: 62px 0px 62px 0px;
-
-        p{
-            font-size: 1.3rem;
-        }
-    }
-}
+  
+  product-item {
+      ion-card img {
+          width: 80%;
+          margin: auto;
+          // height: 300px;
+          // margin-top: 50px;
+      }
+      .card-title-ios {
+          font-weight: 900;
+          font-size: 1.5rem;
+          padding: 5px 0 0px 0;
+          text-transform: uppercase;
+      }
+      .card-title-md {
+          font-weight: 900;
+          font-size: 1.5rem;
+          padding: 5px 0 0px 0;
+          text-transform: uppercase;
+      }
+      ion-fab {
+          width: 110%;
+      }
+      ion-fab[center] {
+          left: 0;
+      }
+      .fab {
+          border-radius: 0;
+          width: 75%;
+          left: -3px;
+      }
+      ion-fab[bottom] {
+          bottom: -3px;
+      }
+      .item-block {
+          width: 25%;
+          float: left;
+          min-height: 5.5rem;
+      }
+      ion-select {
+          max-width: 100%;
+      }
+      .select-ios {
+          padding: 11px 10px 11px 36px;
+      }
+      .select-md {
+          padding: 11px 10px 11px 36px;
+      }
+      ion-card-content img {
+          display: none;
+      }
+      .card-md {
+          margin-bottom: 100px;
+          width: calc(100% - 0px);
+          margin: 62px 0px 62px 0px;
+          p {
+              font-size: 1.3rem;
+          }
+      }
+      .card-ios {
+          margin-bottom: 100px;
+          width: calc(100% - 0px);
+          margin: 46px 0px 62px 0px;
+          p {
+              font-size: 1.3rem;
+          }
+      }
+  }

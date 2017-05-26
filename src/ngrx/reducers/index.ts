@@ -74,7 +74,7 @@ export function getCalculatedCartList() {
                 return cart.productIds.map(productId => {
                     return {
                         id: productId,
-                        title: products[productId].name,
+                        title: products[productId].short_description,
                         brand: products[productId].tags[0].name,
                         image: products[productId].images[0].src,
                         price: products[productId].price,
