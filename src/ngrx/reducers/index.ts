@@ -8,6 +8,7 @@ import { compose } from '@ngrx/core/compose';
 
 import * as fromCart from './cart';
 import * as fromProducts from './products';
+import * as fromShipping from './shipping';
 
 import { ActionReducer } from '@ngrx/store';
 import { storeFreeze } from 'ngrx-store-freeze';
@@ -17,34 +18,35 @@ import { localStorageSync } from 'ngrx-store-localstorage';
 export interface AppState {
     cart: fromCart.CartState;
     products: fromProducts.ProductsState;
+    shipping: fromShipping.ShippingState;
 }
 
 const reducers = {
-  cart: fromCart.cartReducer,
-  products: fromProducts.productsReducer,
- 
+    cart: fromCart.cartReducer,
+    products: fromProducts.productsReducer,
+    shipping: fromShipping.shippingReducer
 };
 
 const developmentReducer: ActionReducer<AppState> = compose(
-	storeFreeze,
-	localStorageSync({keys: ['products','cart'], rehydrate: true}),
-	// storeLogger({
-	// 	level: 'info',
-	// 	collapsed: true,
-	// }),
-	combineReducers)(reducers);
+    storeFreeze,
+    localStorageSync({ keys: ['products', 'cart', 'shipping'], rehydrate: true }),
+    // storeLogger({
+    // 	level: 'info',
+    // 	collapsed: true,
+    // }),
+    combineReducers)(reducers);
 
 const productionReducer: ActionReducer<AppState> = compose(
-	localStorageSync({keys: ['products','cart'], rehydrate: true}),
-	combineReducers)(reducers);
+    localStorageSync({ keys: ['products', 'cart', 'shipping'], rehydrate: true }),
+    combineReducers)(reducers);
 
 export function reducer(state: any, action: any) {
-  if (environment.production) {
-    return productionReducer(state, action);
-  }
-  else {
-    return developmentReducer(state, action);
-  }
+    if (environment.production) {
+        return productionReducer(state, action);
+    }
+    else {
+        return developmentReducer(state, action);
+    }
 }
 
 export function getCartState() {
@@ -57,6 +59,10 @@ export function getProductState() {
         .select(s => s.products);
 }
 
+export function getShippingState() {
+    return (state$: Observable<AppState>) => state$
+        .select(s => s.shipping);
+}
 
 export function getProductEntities() {
     return compose(fromProducts.getProductEntities(), getProductState());
@@ -65,6 +71,27 @@ export function getProductEntities() {
 export function getProductsAsArry() {
     return compose(fromProducts.getProductsAsArry(), getProductState());
 }
+
+
+export function getShippingEntities() {
+    return compose(fromShipping.getCityEntities(), getShippingState());
+}
+
+export function getCityAsArry() {
+    return compose(fromShipping.getCityAsArry(), getShippingState());
+}
+
+// export function getProvince() {
+//     return (state$: Observable<AppState>) => {
+//         return state$.let(getCityAsArry())
+//             .map((province:any[]) => {
+//                 return {
+//                     province_id: province,
+//                     province_name: province[0].province,
+//                 }
+//             })
+//     }
+// }
 
 export function getCalculatedCartList() {
     return (state$: Observable<AppState>) => {

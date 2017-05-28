@@ -34,6 +34,24 @@ export class ProductService {
     .map((res) => JSON.parse(res))
   }
 
+  getCities() {
+    return this.http.get(this.rooturl+"/getAllCities",)
+    .do((res: Response) => console.log(res))
+    .map((res: Response) => res.json())
+    // .map((res) => JSON.parse(res))
+  }
+  getCity(id) {
+    return this.http.get(this.rooturl+"/getCity/"+id,)
+    .do((res: Response) => console.log(res))
+    .map((res: Response) => res.json())
+    // .map((res) => JSON.parse(res))
+  }
+  getProvinces(){
+    return this.http.get(this.rooturl+"/getAllProvince",)
+    .do((res: Response) => console.log(res))
+    .map((res:Response) => res.json());
+  }
+
   postOrders(orders){
     console.log(orders);
     console.log( JSON.stringify(orders));

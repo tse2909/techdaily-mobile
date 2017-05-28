@@ -56,11 +56,22 @@
             <ion-input [class.invalid]="!checkoutForm.controls.address_2.valid && (checkoutForm.controls.address_2.dirty || submitAttempt)"
               formControlName="address_2" type="text"></ion-input>
           </ion-item>
-
+          <ion-item>
+            <ion-label floating>Provinces</ion-label>
+            <ion-select #prov (ionChange)="provinceSelected(prov.value)">
+                  <ion-option *ngFor="let p of provinces"  value="{{p.province_id}}" >{{p.province}}</ion-option>
+            </ion-select>
+          </ion-item>
           <ion-item>
             <ion-label floating>City</ion-label>
-            <ion-input [class.invalid]="!checkoutForm.controls.city.valid && (checkoutForm.controls.city.dirty || submitAttempt)" formControlName="city"
-              type="text"></ion-input>
+            <!--<ion-input [class.invalid]="!checkoutForm.controls.city.valid && (checkoutForm.controls.city.dirty || submitAttempt)" formControlName="city"
+              type="text"></ion-input>-->
+     
+                <ion-select  #city (ionChange)="citySelected(city.value)">
+                  <ion-option *ngFor="let c of cities"  value="{{c.city_id}}" >{{c.city_name}}</ion-option>
+                  
+                </ion-select>
+    
           </ion-item>
 
           <ion-item>
@@ -142,7 +153,7 @@
           Total
         </ion-col>
         <ion-col width-50 style="text-align:right;font-weight:900">
-          Rp.{{cartTotal | number}}
+          Rp.{{total | number}}
         </ion-col>
       </ion-row>
     </ion-card-content>

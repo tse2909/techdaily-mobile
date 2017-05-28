@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { NavController } from 'ionic-angular';
 import { getProductsAsArry, getCalculatedCartList } from '../../ngrx/reducers';
 import { getProducts } from '../../ngrx/actions/products';
+import { getCities } from '../../ngrx/actions/shipping';
 import { ProductService } from '../../providers/product-service';
 import { ProductAllPage, ProductDetailPage, CartPage } from '../../pages';
 
@@ -19,6 +20,7 @@ export class HomePage {
     constructor(public navCtrl: NavController, public store: Store<any>) {
         this.actions$.subscribe(store);
         this.actions$.next(getProducts());
+        this.actions$.next(getCities());
         this.cart = this.store.let(getCalculatedCartList());
         this.products = this.store.let(getProductsAsArry())
         this.products.subscribe(k => console.log(k))
