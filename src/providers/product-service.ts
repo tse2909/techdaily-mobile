@@ -21,8 +21,6 @@ contentHeaders.append('X-Requested-With', 'XMLHttpRequest');
 export class ProductService {
 
   rooturl = "https://techdaily-api.herokuapp.com";
-// rooturl = "http://localhost:8080";
-
   constructor(public http: Http) {
     console.log('Hello ImageService Provider');
     this.http = http;
