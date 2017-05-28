@@ -105,6 +105,7 @@ export function getCalculatedCartList() {
                         brand: products[productId].tags[0].name,
                         image: products[productId].images[0].src,
                         price: products[productId].price,
+                        weight: products[productId].weight,
                         quantity: cart.quantityById[productId]
                     };
                 });

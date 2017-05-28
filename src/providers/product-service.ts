@@ -21,6 +21,7 @@ contentHeaders.append('X-Requested-With', 'XMLHttpRequest');
 export class ProductService {
 
   rooturl = "https://techdaily-api.herokuapp.com";
+// rooturl = "http://localhost:8080";
 
   constructor(public http: Http) {
     console.log('Hello ImageService Provider');
@@ -46,6 +47,15 @@ export class ProductService {
     .map((res: Response) => res.json())
     // .map((res) => JSON.parse(res))
   }
+  getCost(dataShipping) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(this.rooturl+"/getCost", JSON.stringify(dataShipping),{ headers:contentHeaders })
+    .do((res: Response) => console.log(res))
+    .map((res: Response) => res.json())
+    // .map((res) => JSON.parse(res))
+  }
+  
   getProvinces(){
     return this.http.get(this.rooturl+"/getAllProvince",)
     .do((res: Response) => console.log(res))

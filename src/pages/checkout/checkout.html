@@ -58,20 +58,20 @@
           </ion-item>
           <ion-item>
             <ion-label floating>Provinces</ion-label>
-            <ion-select #prov (ionChange)="provinceSelected(prov.value)">
-                  <ion-option *ngFor="let p of provinces"  value="{{p.province_id}}" >{{p.province}}</ion-option>
+            <ion-select formControlName="province" #prov (ionChange)="provinceSelected(prov.value)">
+              <ion-option *ngFor="let p of provinces" value="{{p.province_id}}">{{p.province}}</ion-option>
             </ion-select>
           </ion-item>
           <ion-item>
             <ion-label floating>City</ion-label>
             <!--<ion-input [class.invalid]="!checkoutForm.controls.city.valid && (checkoutForm.controls.city.dirty || submitAttempt)" formControlName="city"
               type="text"></ion-input>-->
-     
-                <ion-select  #city (ionChange)="citySelected(city.value)">
-                  <ion-option *ngFor="let c of cities"  value="{{c.city_id}}" >{{c.city_name}}</ion-option>
-                  
-                </ion-select>
-    
+
+            <ion-select formControlName="city" #city (ionChange)="citySelected(city.value)">
+              <ion-option *ngFor="let c of cities" value="{{c.city_id}}">{{c.city_name}}</ion-option>
+
+            </ion-select>
+
           </ion-item>
 
           <ion-item>
@@ -95,7 +95,21 @@
       </ion-list>
     </ion-card-content>
   </ion-card>
+  <ion-card>
+    <ion-card-header>
+      Shipping Service
+    </ion-card-header>
+    <ion-card-content>
 
+      <ion-list (ionChange)="shippingChange($event)" radio-group>
+
+        <ion-item *ngFor="let s of shippingService">
+          <ion-label>{{s.description}} Rp.{{s.cost[0].value | number}}</ion-label>
+          <ion-radio value={{s.service}}></ion-radio>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
   <ion-card>
     <ion-card-header>
       Payment Method
@@ -144,7 +158,8 @@
           Shipping
         </ion-col>
         <ion-col width-50 style="text-align:right">
-          {{shippingCost}}
+          <div *ngIf="shippingCost">Rp.{{shippingCost | number}}</div>          
+          <div *ngIf="!shippingCost">Fill address</div>
         </ion-col>
       </ion-row>
 

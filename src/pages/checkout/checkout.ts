@@ -38,11 +38,14 @@ export class CheckoutPage {
   shipping;
   billing;
   data;
-  shippingCost: any = "Fill address form";
+  shippingCost: number;
   submitAttempt = false;
   checkoutForm: FormGroup;
   provinces;
   cities;
+  weight: number;
+  shippingService;
+
   // citiesArray;
   constructor(public navCtrl: NavController, 
   public navParams: NavParams, 
@@ -61,7 +64,8 @@ export class CheckoutPage {
       phone: ['', Validators.compose([Validators.maxLength(30), Validators.required])],
       address_1: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
       address_2: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-      city: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+      province: ['', Validators.compose([Validators.required])],
+      city: ['', Validators.compose([Validators.required])],
       state: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
       postcode: ['', Validators.compose([Validators.maxLength(30), Validators.required])],
       country: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
@@ -74,9 +78,11 @@ export class CheckoutPage {
     } else {
       this.cartCount = 0;
       this.cartTotal = 0;
+      this.weight = 0;
       for (let i = 0; i < this.cart.length; i++) {
         this.cartCount += Number(this.cart[i].quantity);
         this.cartTotal += this.cart[i].quantity * this.cart[i].price;
+        this.weight += Number(this.cart[i].weight);
         this.total = this.cartTotal;
         console.log(this.cartTotal);
       }
@@ -92,25 +98,38 @@ export class CheckoutPage {
 
   provinceSelected($event){
     console.log($event);
-    this._service.getCity($event).subscribe(c => {this.cities = c; console.log(this.cities)});
+    this._service.getCity($event).subscribe(c => {this.cities = c; this.shippingCost=0;console.log(this.cities)});
+
   }
 
   citySelected($event){
     console.log($event);
-
-
-    this.shippingCost = 36000;
+    let data = {
+      origin:'48',
+      destination: $event,
+      weight: String(this.weight)
+    };
+    let dataShipping = {
+      data: data
+    }
+    this._service.getCost(dataShipping).subscribe(cost => {this.shippingService = cost[0].costs; this.shippingCost=0;console.log(this.shippingService)});
+    // this.shippingCost = 36000;
     this.cartCount = 0;
       this.cartTotal = 0;
       for (let i = 0; i < this.cart.length; i++) {
         this.cartTotal += this.cart[i].quantity * this.cart[i].price;
       }
-      this.total = this.cartTotal + 36000;
-
+      this.total = this.cartTotal;
 
     
+    
   }
-
+  shippingChange($event){
+    console.log($event);
+    let getService = this.shippingService.filter(k => k.service == $event);
+    this.shippingCost = (getService[0].cost[0].value);
+    this.total = this.cartTotal + this.shippingCost;
+  }
   Checkout() {
     this.submitAttempt = true;
     if (!this.checkoutForm.valid) {
