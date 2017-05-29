@@ -11,6 +11,8 @@ import { REQUEST_CITIES, RECEIVED_CITIES } from '../reducers/shipping';
 // import * as shop from '../api/shop';
 import { ProductService } from '../../providers/product-service';
 import { HomePage } from '../../pages';
+import { Payment } from '../../pages';
+
 @Injectable()
 export class ShopEffects {
 
@@ -44,10 +46,9 @@ export class ShopEffects {
                 type: CHECKOUT_SUCCESS,
                 payload: res
             };
-
         })
-        .do(() => {
-            this.app.getActiveNav().setRoot(HomePage);
+        .do((res) => {
+            this.app.getActiveNav().push(Payment, {res});
         });
 
     @Effect()

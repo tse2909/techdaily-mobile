@@ -62,6 +62,7 @@ export class ProductService {
     console.log( JSON.stringify(orders));
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post(this.rooturl+"/postOrders", orders, { headers:contentHeaders }).map(k => console.log(k))
+    return this.http.post(this.rooturl+"/postOrders", orders, { headers:contentHeaders })
+    .map((res: Response) => res.json())
   }
 }

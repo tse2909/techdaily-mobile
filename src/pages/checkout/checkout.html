@@ -15,9 +15,7 @@
 
 <ion-content padding>
   <ion-card>
-    <ion-card-header>
-      Shipping Detail
-    </ion-card-header>
+      <div class="title-card">Shipping Detail</div>
     <ion-card-content>
       <ion-list>
         <form [formGroup]="checkoutForm">
@@ -26,44 +24,44 @@
             <ion-checkbox disabled="false"></ion-checkbox>
           </ion-item>-->
           <ion-item>
-            <ion-label floating>First Name</ion-label>
+            <ion-label stacked>First Name</ion-label>
             <ion-input [class.invalid]="!checkoutForm.controls.first_name.valid && (checkoutForm.controls.first_name.dirty || submitAttempt)"
               formControlName="first_name" type="text"></ion-input>
           </ion-item>
           <ion-item>
-            <ion-label floating>Last Name</ion-label>
+            <ion-label stacked>Last Name</ion-label>
             <ion-input [class.invalid]="!checkoutForm.controls.last_name.valid && (checkoutForm.controls.last_name.dirty || submitAttempt)"
               formControlName="last_name" type="text"></ion-input>
           </ion-item>
           <ion-item>
-            <ion-label floating>Email</ion-label>
+            <ion-label stacked>Email</ion-label>
             <ion-input [class.invalid]="!checkoutForm.controls.email.valid && (checkoutForm.controls.email.dirty || submitAttempt)" formControlName="email"
-              type="text"></ion-input>
+              type="email"></ion-input>
           </ion-item>
           <ion-item>
-            <ion-label floating>Phone</ion-label>
+            <ion-label stacked>Phone</ion-label>
             <ion-input [class.invalid]="!checkoutForm.controls.phone.valid && (checkoutForm.controls.phone.dirty || submitAttempt)" formControlName="phone"
               type="number"></ion-input>
           </ion-item>
           <ion-item>
-            <ion-label floating>Address1</ion-label>
+            <ion-label stacked>Address1</ion-label>
             <ion-input [class.invalid]="!checkoutForm.controls.address_1.valid && (checkoutForm.controls.address_1.dirty || submitAttempt)"
               formControlName="address_1" type="text"></ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-label floating>Address2</ion-label>
+            <ion-label stacked>Address2</ion-label>
             <ion-input [class.invalid]="!checkoutForm.controls.address_2.valid && (checkoutForm.controls.address_2.dirty || submitAttempt)"
               formControlName="address_2" type="text"></ion-input>
           </ion-item>
           <ion-item>
-            <ion-label floating>Provinces</ion-label>
+            <ion-label stacked>Provinces</ion-label>
             <ion-select formControlName="province" #prov (ionChange)="provinceSelected(prov.value)">
               <ion-option *ngFor="let p of provinces" value="{{p.province_id}}">{{p.province}}</ion-option>
             </ion-select>
           </ion-item>
           <ion-item>
-            <ion-label floating>City</ion-label>
+            <ion-label stacked>City</ion-label>
             <!--<ion-input [class.invalid]="!checkoutForm.controls.city.valid && (checkoutForm.controls.city.dirty || submitAttempt)" formControlName="city"
               type="text"></ion-input>-->
 
@@ -75,70 +73,41 @@
           </ion-item>
 
           <ion-item>
-            <ion-label floating>State</ion-label>
-            <ion-input [class.invalid]="!checkoutForm.controls.state.valid && (checkoutForm.controls.state.dirty || submitAttempt)" formControlName="state"
-              type="text"></ion-input>
-          </ion-item>
-
-          <ion-item>
-            <ion-label floating>Postal Code*</ion-label>
+            <ion-label stacked>Postal Code</ion-label>
             <ion-input [class.invalid]="!checkoutForm.controls.postcode.valid && (checkoutForm.controls.postcode.dirty || submitAttempt)"
               formControlName="postcode" type="text"></ion-input>
           </ion-item>
 
-          <ion-item>
-            <ion-label floating>Country</ion-label>
-            <ion-input [class.invalid]="!checkoutForm.controls.country.valid && (checkoutForm.controls.country.dirty || submitAttempt)"
-              formControlName="country" type="text"></ion-input>
-          </ion-item>
         </form>
       </ion-list>
     </ion-card-content>
   </ion-card>
   <ion-card>
-    <ion-card-header>
-      Shipping Service
-    </ion-card-header>
+
+      <div class="title-card">Shipping Service</div>
+
     <ion-card-content>
 
       <ion-list (ionChange)="shippingChange($event)" radio-group>
+        <div *ngIf="!city.value">
+          <div>Fill address</div>
+        </div>
 
-        <ion-item *ngFor="let s of shippingService">
-          <ion-label>{{s.description}} Rp.{{s.cost[0].value | number}}</ion-label>
+        <div *ngIf="!shippingService && city">
+          <div>No shiping service for this area</div>
+        </div>
+       <div *ngIf="shippingService?.length > 0">
+          <ion-item *ngFor="let s of shippingService">
+          <ion-label>JNE {{s.service}} - {{s.cost[0].etd}} day - Rp.{{s.cost[0].value | number}}</ion-label>
           <ion-radio value={{s.service}}></ion-radio>
         </ion-item>
+       </div>
+       
       </ion-list>
     </ion-card-content>
   </ion-card>
-  <ion-card>
-    <ion-card-header>
-      Payment Method
-    </ion-card-header>
-    <ion-card-content>
-      <ion-row>
-        <ion-col width-50>
-          <ion-card>
-            <ion-card-header>
-              Bank Transfer
-            </ion-card-header>
-            <ion-card-content>
-
-            </ion-card-content>
-          </ion-card>
-        </ion-col>
-        <ion-col width-50>
-          <ion-card>
-            <ion-card-header>
-              Paypal
-            </ion-card-header>
-            <ion-card-content>
-
-            </ion-card-content>
-          </ion-card>
-        </ion-col>
-      </ion-row>
-    </ion-card-content>
-  </ion-card>
+  
+  
 
   <ion-card style="position:relative">
 
@@ -151,6 +120,14 @@
         </ion-col>
         <ion-col width-50 style="text-align:right">
           Rp.{{cartTotal | number}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col width-50>
+          Weight
+        </ion-col>
+        <ion-col width-50 style="text-align:right">
+          {{weight/ 1000}} Kg
         </ion-col>
       </ion-row>
       <ion-row>
@@ -176,5 +153,5 @@
 </ion-content>
 
 <ion-fab center bottom>
-  <button [disabled]="!checkoutForm.valid" ion-fab style="width: 100%" (click)="gotoCheckout.emit(cart)">BUY</button>
+  <button [disabled]="!checkoutForm.valid" ion-fab style="width: 100%" (click)="Checkout()">BUY</button>
 </ion-fab>

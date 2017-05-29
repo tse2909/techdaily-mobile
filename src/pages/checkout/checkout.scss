@@ -1,9 +1,17 @@
 page-checkout {
-
+    .card-md,.card-ios{
+        width: calc(100% - 0px);
+        margin: 5px 0 0 0;
+    }
     ion-fab{
         width: 102%;
     }
-
+    .item-md, .item-ios{
+        font-size:1.4rem;
+    }
+.list-md:first-child,.list-ios:first-child {
+    margin: 16px 0 16px 0;
+}
     ion-fab[center]{
         left:0;
         margin-left:0px;
@@ -36,10 +44,7 @@ page-checkout {
         font-weight: 900;
         padding: 20px 0px 0 20px;
     }
-    .card-md, .card-ios{
-        width: calc(100% - 0px);
-        margin: 10px 0px 10px 0px;
-    }
+
 
     .card-header-ios + .card-content-ios, .card-ios .item + .card-content-ios,
     .card-header-md + .card-content-md, .card-md .item + .card-content-md{

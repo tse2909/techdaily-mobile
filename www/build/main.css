@@ -24837,7 +24837,7 @@ cart-list .card-content-md {
 }
 
 cart-list .card-ios:first-child {
-  margin: 55px 0 0 0;
+  margin: 48px 0 0 0;
   width: 100%;
 }
 
@@ -24990,6 +24990,10 @@ product-item .card-ios p {
   font-size: 1.3rem;
 }
 
+product-item .card-content-md, product-item .card-content-ios {
+  font-size: 1.2rem;
+}
+
 product-show .card-title-md,
 product-show .card-title-ios {
   font-size: 1.8rem;
@@ -25111,8 +25115,21 @@ product-slide .slide-product .swiper-pagination-fraction, product-slide .slide-p
   display: none;
 }
 
+page-checkout .card-md, page-checkout .card-ios {
+  width: calc(100% - 0px);
+  margin: 5px 0 0 0;
+}
+
 page-checkout ion-fab {
   width: 102%;
+}
+
+page-checkout .item-md, page-checkout .item-ios {
+  font-size: 1.4rem;
+}
+
+page-checkout .list-md:first-child, page-checkout .list-ios:first-child {
+  margin: 16px 0 16px 0;
 }
 
 page-checkout ion-fab[center] {
@@ -25150,11 +25167,6 @@ page-checkout .title-card {
   font-size: 1.8rem;
   font-weight: 900;
   padding: 20px 0px 0 20px;
-}
-
-page-checkout .card-md, page-checkout .card-ios {
-  width: calc(100% - 0px);
-  margin: 10px 0px 10px 0px;
 }
 
 page-checkout .card-header-ios + .card-content-ios, page-checkout .card-ios .item + .card-content-ios,
@@ -25228,6 +25240,23 @@ page-home .banner .card-md {
 
 page-home .banner .card-ios {
   margin: 0;
+}
+
+page-payment .card-md,
+page-payment .card-ios {
+  width: calc(100% - 0px);
+  margin: 5px 0 0 0;
+}
+
+page-payment .title-card {
+  font-size: 1.8rem;
+  font-weight: 900;
+  padding: 20px 0px 0 20px;
+}
+
+page-payment .button-ios,
+page-payment .button-md {
+  background-color: #003366;
 }
 
 page-product-all .content-md, page-product-all .content-ios {

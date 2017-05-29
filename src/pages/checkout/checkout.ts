@@ -60,15 +60,13 @@ export class CheckoutPage {
     this.checkoutForm = formBuilder.group({
       first_name: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
       last_name: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-      email: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+      email: ['', Validators.compose([Validators.maxLength(30), Validators.required])],
       phone: ['', Validators.compose([Validators.maxLength(30), Validators.required])],
       address_1: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
       address_2: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
       province: ['', Validators.compose([Validators.required])],
       city: ['', Validators.compose([Validators.required])],
-      state: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-      postcode: ['', Validators.compose([Validators.maxLength(30), Validators.required])],
-      country: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+      postcode: ['', Validators.compose([Validators.maxLength(30), Validators.required])]
     });
 
     this.cart = this.navParams.get('cart');
@@ -82,7 +80,7 @@ export class CheckoutPage {
       for (let i = 0; i < this.cart.length; i++) {
         this.cartCount += Number(this.cart[i].quantity);
         this.cartTotal += this.cart[i].quantity * this.cart[i].price;
-        this.weight += Number(this.cart[i].weight);
+        this.weight += Number(this.cart[i].quantity * this.cart[i].weight);
         this.total = this.cartTotal;
         console.log(this.cartTotal);
       }
@@ -99,7 +97,6 @@ export class CheckoutPage {
   provinceSelected($event){
     console.log($event);
     this._service.getCity($event).subscribe(c => {this.cities = c; this.shippingCost=0;console.log(this.cities)});
-
   }
 
   citySelected($event){
@@ -136,7 +133,7 @@ export class CheckoutPage {
 
     } else {
       let loading = this.loadingCtrl.create({
-        content: 'Deleting item ...'
+        content: 'Processing your order ...'
       });
       loading.present();
       setTimeout(function () {

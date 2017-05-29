@@ -30,7 +30,9 @@ import { BrandPage,
   HomePage,
   ProductAllPage,
   ProductDetailPage,
-  TabsPage } from '../pages';
+  TabsPage,
+  Payment 
+} from '../pages';
 
 
 @NgModule({
@@ -44,6 +46,7 @@ import { BrandPage,
     ProductAllPage,
     ProductDetailPage,
     TabsPage,
+    Payment,
     // components
     BrandListComponent,
     CartButtonComponent,
@@ -71,6 +74,7 @@ import { BrandPage,
     HomePage,
     ProductAllPage,
     ProductDetailPage,
+    Payment
   ],
   providers: [
     StatusBar,

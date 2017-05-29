@@ -1,0 +1,62 @@
+<!--
+  Generated template for the Payment page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar hideBackButton="true">
+    <ion-title>payment</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+    Transaction # {{detailOrder.id}}  
+    </ion-card-header>
+    <ion-card-content>
+      Thank you for ordering, {{detailOrder.billing.first_name}} {{detailOrder.billing.last_name}} <br>
+      Please transfer your payment to the following bank account:
+    <div class="title-card">PAYMENT ACCOUNT</div>
+    
+      <ion-row>
+        <ion-col col-4>
+          <img src="http://res.cloudinary.com/dkysirlmo/image/upload/v1496073217/bca_mkd7wq.jpg" alt="">
+        </ion-col>
+        <ion-col col-8>
+          3901195979 Techdaily
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-4>
+          <img src="http://res.cloudinary.com/dkysirlmo/image/upload/v1496073217/mandiri_r44tqn.jpg" alt="">
+        </ion-col>
+        <ion-col col-8>
+          3901195979 Techdaily
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-4>
+          <img src="http://res.cloudinary.com/dkysirlmo/image/upload/v1496073217/bri_cqczgr.jpg" alt="">
+        </ion-col>
+        <ion-col col-8>
+          3901195979 Techdaily
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-4>
+          <img src="http://res.cloudinary.com/dkysirlmo/image/upload/v1496073217/bni_cwobpd.jpg" alt="">
+        </ion-col>
+        <ion-col col-8>
+          3901195979 Techdaily
+        </ion-col>
+      </ion-row>
+    
+      <button ion-button full (click)="return()">Purchase again</button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

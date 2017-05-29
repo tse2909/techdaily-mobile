@@ -1,0 +1,16 @@
+page-payment {
+    .card-md,
+    .card-ios {
+        width: calc(100% - 0px);
+        margin: 5px 0 0 0;
+    }
+    .title-card {
+        font-size: 1.8rem;
+        font-weight: 900;
+        padding: 20px 0px 0 20px;
+    }
+    .button-ios,
+    .button-md {
+        background-color: #003366;
+    }
+}
