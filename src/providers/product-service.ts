@@ -15,8 +15,6 @@ contentHeaders.append('Accept', 'application/json');
 contentHeaders.append('Content-Type', 'application/json');
 contentHeaders.append('X-Requested-With', 'XMLHttpRequest');
 
-
-
 @Injectable()
 export class ProductService {
   rooturl = "https://techdaily-api.herokuapp.com";
